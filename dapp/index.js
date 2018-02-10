@@ -9,12 +9,151 @@ var app = express();
 const crypto = require('crypto');
 var request = require('request');
 
+var Web3 = require('web3');
+// var web3 = new Web3();
+
 // parse x-www-form-urlencoded and json
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
+var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+var contract = web3.eth.contract(abiArray).at(contractAddress);
+
+
+var source = "" + 
+"pragma solidity ^0.4.6;" + 
+`
+contract Worksite {
+        address public boss;
+        uint public budget;
+        mapping(address => Worker) public employees;
+
+        function Worksite(uint[] salaries, address[] workers, uint _budget) public {
+                assert(salaries.length == workers.length);
+                assert(_budget > 0);
+                
+                boss = msg.sender; // Contract created by boss!!
+                budget = _budget;
+
+                for (uint i = 0; i < salaries.length; i++) {
+                        Worker w = new Worker(salaries[i], workers[i]);
+                        employees[workers[i]] = w;
+                }
+        }
+
+        function hire(uint salary, address worker) public {
+                Worker w = new Worker(salary, worker);
+                employees[worker] = w;
+        }
+
+        function fire(address worker) public {
+                employees[worker].fireWorker();
+        }
+
+        function makePayt(address worker, uint payment) public {
+                assert(budget - payment > 0);
+
+                employees[worker].payWorker(payment);
+                budget -= payment;
+        }
+
+        function adjustBudget(uint newBudget) public {
+                assert(newBudget > 0);
+
+                budget = newBudget;
+        }
+}`;
+var compiled = web3.eth.compile.solidity(source);
+var abi = compiled.info.abiDefinition;
+var myContract;
+
+
+
+
+
+
+
+
 // set port
 app.set('port', (process.env.PORT || 5000));
+
+
+
+
+
+app.get('/create_contract', (req, res) => {
+        web3.eth.contract(abi).new({data: code}, function (err, contract) {
+                if(err) {
+                        console.error(err);
+                        return;
+                } else if(contract.address) {
+                        myContract = contract;
+                }
+        });
+
+}
+
+app.get('/pay_worker', (req, res) => {
+        contract.pay_worker();
+}
+
+app.get('/validate_payment', (req, res) => {
+        contract.validate_payment();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // connect to Mongo Server
 //var mongoUri = "mongodb://heroku_19p6g17v:uud3cjf7v0h6u2v5044e7cf1ca@ds159235.mlab.com:59235/heroku_19p6g17v";
