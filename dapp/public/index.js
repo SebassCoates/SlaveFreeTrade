@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 
 
 app.get('/pay_worker', (req, res, ) => {
-        worksiteContract.makePayt(5);
+        worksiteContract.makePayt(req.name, req.amount);
 });
 
 app.get('/validate_payment', (req, res) => {
