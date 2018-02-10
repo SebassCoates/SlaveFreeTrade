@@ -41,4 +41,8 @@ contract Worksite {
 
                 budget = newBudget;
         }
+	
+	function validatePayment() public {
+		employees[msg.sender].validatePayment(msg.sender);
+	}	
 }

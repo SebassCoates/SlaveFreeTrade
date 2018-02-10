@@ -1,0 +1,20 @@
+{
+  "name": "SlaveFreeTrade",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:SebassCoates/SlaveFreeTrade.git",
+  "author": "John Tagliaferro <j22tag@gmail.com>",
+  "engines": {
+    "node": "8.9.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie": "^0.3.1",
+    "express": "^4.16.2",
+    "mathjs": "^3.17.0",
+    "path": "^0.12.7",
+    "pug": "^2.0.0-rc.4",
+    "request-json": "^0.6.2"
+  }
+}

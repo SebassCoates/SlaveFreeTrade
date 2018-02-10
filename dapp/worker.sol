@@ -30,10 +30,10 @@ contract Worker {
                 validated = false;
         }
 
-        function validatePayment() public {
+        function validatePayment(address caller) public {
                 assert(employed);
-                assert(!validated);
-                assert(msg.sender == workerAddress);
+                assert(!validated)
+                assert(caller == workerAddress);
 
                 validated = true;
         }
