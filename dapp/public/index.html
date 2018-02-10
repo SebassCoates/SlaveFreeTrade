@@ -1,19 +1,49 @@
-<!--
-Copyright 2018 Sebastian Coates, John Tagliaferro, Mateo Guaman, & Logan Herodes
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
--->
-
-
 <!DOCTYPE html>
 <html>
 <head>
         <title>IDHack2018</title>
-        <link rel="stylesheet" href="file.css">
+<style>
+body {
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+input,select {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align:center;
+        text-decoration: none;
+        display: inline-block;
+        font-size:16px;
+        height:75px;
+        width:200px;
+        font-family: Roboto;
+        -webkit-transition-duration: 0.4s;
+        transition-duration:0.4s;
+}
+input:hover {
+        background-color: #919899;
+}
+#outPopUp {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  margin: -150px 0 0 -150px;
+}
+#title {
+  text-align:left;
+  font-size:32;
+  font-family:Roboto;
+  color:white;
+}
+</style>
 </head>
 <body>
         <p id="title">Employer</p>
@@ -26,7 +56,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         <br>
         <br>
         <form action = "/pay_worker" method = "get">
-            <input type="text" name="name" value="Employee ID">
+            <input type="text" name="name" placeholder="Employee ID">
 <!--           <select name="Worker">
               <option value="Mark">Mark</option>
               <option value="Juan">Juan</option>
@@ -35,24 +65,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             </select> 
 -->            <br>
             <br>
-            <input type="text" name="amount" value="Payment amount">
+            <input type="text" name="amount" placeholder="Payment amount">
+	    </form>
+	    <br>
             <br>
             <br>
-            <br>
-            <input type="submit" value="Submit payment">
-        </form>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <form action = "/validate_payment" method = "get">
-                <input type="submit" value="Validate payment">
+	    <form action = "/validate_payment" method = "get">
+            	<input type="submit" value="Validate_payment">
+	    </form>
         </form>
 </div>
 </body>
