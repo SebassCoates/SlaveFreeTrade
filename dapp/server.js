@@ -29,16 +29,16 @@ app.listen(app.get('port'), function() {
 
 
 app.get('/', (req, res) => {
-        console.log("page log");
-        res.render("index.html"); 
+        res.sendFile("file.html"); 
 });
 
-
-app.get('/pay_worker', (req, res, ) => {
-        worksiteContract.makePayt(req.name, req.amount);
+app.get('/pay_worker', (req, res) => {
+        res.redirect('/');
+        worksiteContract.makePayt(req.query.name, req.query.amount);
 });
 
 app.get('/validate_payment', (req, res) => {
+        res.redirect('/');
         worksiteContract.validatePayment();
 });
 

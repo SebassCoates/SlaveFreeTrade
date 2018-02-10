@@ -1,54 +1,48 @@
+
 <!DOCTYPE html>
 <html>
 <head>
         <title>IDHack2018</title>
-<style>
-body {
-    background-image: url('https://pixabay.com/get/eb3db50a2ff3083ed1534705fb0938c9bd22ffd41cb0194393f4c17fa3/photoshop-2845779_1920.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-}
-input {
-        background-color: #4CAF50;
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align:center;
-        text-decoration: none;
-        display: inline-block;
-        font-size:32px;
-        height:75px;
-        width:200px;
-        font-family: Roboto;
-        -webkit-transition-duration: 0.4s;
-        transition-duration:0.4s;
-}
-input:hover {
-        background-color: #919899;
-}
-#outPopUp {
-  position: absolute;
-  width: 300px;
-  height: 200px;
-  z-index: 15;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  margin: -150px 0 0 -150px;
-}
-</style>
+        <link rel="stylesheet" href="file.css">
 </head>
-<div id="outPopUp">
 <body>
-
-        <form action = "" method = "get">
-                <input type="submit" value="Employer">
+        <p id="title">Employer</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="outPopUp">
+        <br>
+        <br>
+        <form action = "/pay_worker" method = "get">
+            <input type="text" name="name" value="Employee ID">
+<!--           <select name="Worker">
+              <option value="Mark">Mark</option>
+              <option value="Juan">Juan</option>
+              <option value="Pedro">Pedro</option>
+              <option value="Enrique">Enrique</option>
+            </select> 
+-->            <br>
+            <br>
+            <input type="text" name="amount" value="Payment amount">
+            <br>
+            <br>
+            <br>
+            <input type="submit" value="Submit payment">
         </form>
         <br>
         <br>
-        <form action = "" method = "get">
-                <input type="submit" value="Worker">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <form action = "/validate_payment" method = "get">
+                <input type="submit" value="Validate payment">
         </form>
 </div>
 </body>
