@@ -7,7 +7,7 @@ contract Worker {
         uint balance;
         address workerAddress;
 
-        function Worker(uint _salary, address _workerAddress) {
+        function Worker(uint _salary, address _workerAddress) public {
                 workerAddress = _workerAddress;
                 salary = _salary;
                 validated = true;
@@ -15,14 +15,14 @@ contract Worker {
                 balance = 0;
         }
 
-        function fireWorker() {
+        function fireWorker() public {
                 assert(employed);
                 assert(validated);
 
                 employed = false;
         }
 
-        function payWorker(uint payment) {
+        function payWorker(uint payment) public {
                 assert(employed);
                 assert(validated);
 
@@ -30,9 +30,9 @@ contract Worker {
                 validated = false;
         }
 
-        function validatePayment() {
+        function validatePayment() public {
                 assert(employed);
-                assert(!validated)
+                assert(!validated);
                 assert(msg.sender == workerAddress);
 
                 validated = true;
