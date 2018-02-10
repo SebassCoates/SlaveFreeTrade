@@ -19,7 +19,9 @@ var request = require('request');
 var Web3 = require('web3');
 var web3 = new Web3();
 
-// parse x-www-form-urlencoded and json
+var worksiteContractJSON =  [ { "constant": true, "inputs": [], "name": "boss", "outputs": [ { "name": "", "type": "address", "value": "0x2bbba437db0f0e362a9728de2cdb8ff9ffc15694" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "worker", "type": "address" }, { "name": "payment", "type": "uint32" } ], "name": "makePayment", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "worker", "type": "address" } ], "name": "hire", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "budget", "outputs": [ { "name": "", "type": "uint32", "value": "1000" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "inputs": [ { "name": "_workers", "type": "address[]", "index": 0, "typeShort": "address", "bits": "[]", "displayName": "&thinsp;<span class=\"punctuation\">_</span>&thinsp;workers", "template": "elements_input_json", "value": [] }, { "name": "_budget", "type": "uint32", "index": 1, "typeShort": "uint", "bits": "32", "displayName": "&thinsp;<span class=\"punctuation\">_</span>&thinsp;budget", "template": "elements_input_uint", "value": "1000" } ], "payable": false, "stateMutability": "nonpayable", "type": "constructor" } ];
+
+worksiteContract = new web3.eth.Contract(worksiteContractJSON, "0x729ec7e1650df28eab47d8d659a92cea43ccb01c")
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
@@ -43,7 +45,7 @@ app.get('/', (req, res) => {
 
 app.get('/pay_worker', (req, res) => {
         res.redirect('/');
-        worksiteContract.makePayt(req.query.name, req.query.amount);
+        worksiteContract.makePayment(req.query.name, req.query.amount);
 });
 
 app.get('/validate_payment', (req, res) => {
