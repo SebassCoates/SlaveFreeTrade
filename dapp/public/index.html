@@ -3,6 +3,12 @@
 <head>
         <title>IDHack2018</title>
 <style>
+body {
+    background-image: url('https://pixabay.com/get/eb3db50a2ff3083ed1534705fb0938c9bd22ffd41cb0194393f4c17fa3/photoshop-2845779_1920.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
 input {
         background-color: #4CAF50;
         border: none;
@@ -21,8 +27,19 @@ input {
 input:hover {
         background-color: #919899;
 }
+#outPopUp {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  margin: -150px 0 0 -150px;
+}
 </style>
 </head>
+<div id="outPopUp">
 <body>
 
         <form action = "" method = "get">
@@ -33,5 +50,6 @@ input:hover {
         <form action = "" method = "get">
                 <input type="submit" value="Worker">
         </form>
+</div>
 </body>
 </html>
